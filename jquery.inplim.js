@@ -1,12 +1,12 @@
 /**
- * @autor ntakeda
+ * @autor ntakeda67
  * @site https://github.com/ntakeda67/jquery.inplim.js
  * @version 0.0.1
  * @title jquery.inplim
- * 
+ *
  * The MIT License
  *
- * Copyright (c) <year> <copyright holders>
+ * Copyright (c) 2012 ntakeda67
  *
  * mission is hereby granted, free of charge, to any person obtaining a copy
  * this software and associated documentation files (the "Software"), to deal

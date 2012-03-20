@@ -5,6 +5,9 @@
 <script type="text/javascript">
 $(function(){
 $('#numeric').inplim({regexStr:'[0-9]', jp:true});
+$('#alphabet').inplim({regexStr:'[a-zA-Z]', jp:true});
+$('#alphanumeric').inplim({regexStr:'[a-zA-Z0-9]', jp:true});
+$('#mail').inplim({regexStr:'[a-zA-Z0-9-_\.@]', jp:true});
 });
 </script>
 <title>Filter Test</title>
@@ -15,15 +18,15 @@ $('#numeric').inplim({regexStr:'[0-9]', jp:true});
 <input type="text" id="numeric">
 </div>
 <div>
-<label for="numeric">Accept Only Alphabet Characters</label>
+<label for="alphabet">Accept Only Alphabet Characters</label>
 <input type="text" id="alphabet">
 </div>
 <div>
-<label for="numeric">Accept Only Alphabet or Numeric Characters</label>
+<label for="alphanumeric">Accept Only Alphabet or Numeric Characters</label>
 <input type="text" id="alphanumeric">
 </div>
 <div>
-<label for="numeric">Accept Only mail</label>
+<label for="mail">Accept Only mail</label>
 <input type="text" id="mail">
 </div>
 </body>

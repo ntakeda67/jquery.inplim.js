@@ -32,12 +32,15 @@
        /**
 	* @param options {Object}
 	* @param options.regexStr {String}
+	* @param options.jp {Boolean}
+	* @param options.copy {Boolean}
 	* @return {Boolean} true: restriction enabled, false:disabled
 	*/
        inplim : function(options){
 	 var defaults = {
 	   jp: false,
-	   regexStr: '.*'
+	   regexStr: '.*',
+	   paste:false
 	 };
 	 if(!options){
 	   return false;
@@ -50,6 +53,12 @@
 	 if(options.jp){
 	   $(this).keyup(jpRestrict);
 	 }
+	 if(options.paste){
+	   $(this).bind('paste', function(event){
+			  var corrected = deleteIllegalText($(event.target).val(), regex);
+			  $(event.taget).val(corrected);
+			});
+	 }
 
 	 return true;
 
@@ -60,15 +69,23 @@
 	 function jpRestrict(event){
 	   var code = getInputCode(event);
 	   if(code === 13){
-	     var corrected = '';
-	     $.each($(that).val(), function(){
-		      corrected += regex.test(this) ? this : '';
-		      console.log(this);
-		    });
-	     $(that).val(corrected);
+	     var corrected = deleteIllegalText($(event.target).val(), regex);
+	     $(event.target).val(corrected);
 	   }
 	 }
 
+	 /**
+	  * 入力検証に違反している文字列を削除する。
+	  * @param 検査対象文字列
+	  * @return 削除後の文字列
+	  */
+	 function deleteIllegalText(text, regex){
+	     var corrected = '';
+	     $.each(text, function(){
+		      corrected += regex.test(this) ? this : '';
+		    });
+	     return corrected;
+	 }
 	 /**
 	  * stop to input not allowed character.
 	  * @param event {Object} event object.

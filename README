@@ -13,7 +13,7 @@
   - jp: when input enter illegal characters are deleted. (default: false)
 
  ex.
-  $('#numeric').inplim({regexStr:'[0-9]', jp:true});
+  $('#numeric').inplim({regexStr:'[0-9]', autocorrect:true});
   $('#alphabet').inplim({regexStr:'[a-zA-Z]'});
   $('#alphanumeric').inplim({regexStr:'[a-zA-Z0-9]'});
   $('#mail').inplim({regexStr:'[a-zA-Z0-9-_\.@]'});

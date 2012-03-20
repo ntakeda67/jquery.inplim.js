@@ -32,32 +32,24 @@
        /**
 	* @param options {Object}
 	* @param options.regexStr {String}
-	* @param options.jp {Boolean}
-	* @param options.copy {Boolean}
+	* @param options.autocorrect {Boolean}
+	* @param options.paste {Boolean}
 	* @return {Boolean} true: restriction enabled, false:disabled
 	*/
        inplim : function(options){
 	 var defaults = {
-	   jp: false,
-	   regexStr: '.*',
-	   paste:false
+	   autocorrect: false,
+	   regexStr: '.*'
 	 };
 	 if(!options){
 	   return false;
 	 }
 
-	 var that = this;
 	 var options = $.extend(defaults, options);
 	 var regex = new RegExp(options.regexStr);
 	 $(this).keypress(restrict);
-	 if(options.jp){
+	 if(options.autocorrect){
 	   $(this).keyup(jpRestrict);
-	 }
-	 if(options.paste){
-	   $(this).bind('paste', function(event){
-			  var corrected = deleteIllegalText($(event.target).val(), regex);
-			  $(event.taget).val(corrected);
-			});
 	 }
 
 	 return true;

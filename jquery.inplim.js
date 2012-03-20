@@ -1,31 +1,42 @@
+/**
+ * @autor ntakeda
+ * @site https://github.com/ntakeda67/jquery.inplim.js
+ * @version 0.0.1
+ */
 (function(jQuery){
    jQuery.fn.extend(
      {
-       inplim : function(method){
-	 var methods = {
-	   init: function(options){
-	     // 初期化処理
-	     this.inplim.settings = jQuery.extend({}, this.inplim.defaults, options);
-	     return this.each(function(){
-				// initialize
-			      });
-	   },
-	   limit: function(regexp){
-	   }
-	 };
-
-	 if(methods[method]){
-	   return methods[method].apply(this, Array.prototype.slice.call(arugemntes, 1));
-	 } else if(typeof method === 'object' || !method) {
-	   return methods.init.apply(this, arguments);
-	 } else {
-	   jQuery.error(method + ' does not exist jquery.inplim');
+       /**
+	* @param options {Object}
+	* @param options.regexStr {String}
+	* @return {Boolean} true: restriction enabled, false:disabled
+	*/
+       inplim : function(options){
+	 if(!options){
+	   return false;
 	 }
 
-	 jQuery.fn.inplim.defaults = {
-	   // 正規表現の未指定時の入力検証に用いる
-	   regexpStr: '.*'
-	 };
+	 var regexStr = options.regexStr || '.*';
+	 var regex = new RegExp(regexStr);
+	 $(this).keypress(restrict);
+	 $(this).keyup(function(event){
+			 //13だけひろう
+		       });
+
+	 return true;
+	 /**
+	  * stop to input not allowed character.
+	  * @param event {Object} event object.
+	  */
+	 function restrict(event){
+	   var code = event.which ? event.which : event.keyCode ? event.keyCode : event.charCode ? event.charCode : 0 ;
+	   var ch = String.fromCharCode(code);
+	   if( (!code) || (code < 32) || (!regex.test(ch)) ) {
+	     event.preventDefault();
+	     return false;
+	   }
+	   return true;
+	 }
        }
      }
    );

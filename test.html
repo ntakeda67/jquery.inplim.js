@@ -1,9 +1,11 @@
 <html>
 <head>
 <script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="jquery.inplim.js"></script>
+<script type="text/javascript" src="./jquery.inplim.js"></script>
 <script type="text/javascript">
-$('#numeric').inplim('limit');
+$(function(){
+$('#numeric').inplim({regexStr:'[0-9]'});
+});
 </script>
 <title>Filter Test</title>
 </head>

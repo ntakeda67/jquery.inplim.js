@@ -3,7 +3,7 @@
  * @site https://github.com/ntakeda67/jquery.inplim.js
  * @version 0.0.1
  * @title jquery.inplim
- *
+ * @overview limit character inputed when pressed key with jQuery.
  * The MIT License
  *
  * Copyright (c) 2012 ntakeda67

@@ -9,11 +9,11 @@
 
 <jQueryObject>.inplim({regexStr:<foo>, jp:<boolean> });
  parameters.
-  - regexpStr: allwed characters (regexp)
-  - jp: when input enter illegal characters are deleted. (default: false)
+  - regexpStr:{String} allwed characters (regexp)
+  - autocorrect:{Boolean} when input enter illegal characters are deleted. (default: false)
 
  ex.
-  $('#numeric').inplim({regexStr:'[0-9]', autocorrect:true});
+  $('#numeric').inplim({regexStr:'[0-9]'});
   $('#alphabet').inplim({regexStr:'[a-zA-Z]'});
   $('#alphanumeric').inplim({regexStr:'[a-zA-Z0-9]'});
   $('#mail').inplim({regexStr:'[a-zA-Z0-9-_\.@]'});

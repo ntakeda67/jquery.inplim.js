@@ -33,7 +33,6 @@
 	* @param options {Object}
 	* @param options.regexStr {String}
 	* @param options.autocorrect {Boolean}
-	* @param options.paste {Boolean}
 	* @return {Boolean} true: restriction enabled, false:disabled
 	*/
        inplim : function(options){
@@ -81,10 +80,18 @@
 	 /**
 	  * stop to input not allowed character.
 	  * @param event {Object} event object.
+	  * @return {Boolean} true:accept character, false:reject character
 	  */
 	 function restrict(event){
 	   var code = getInputCode(event);
 	   var ch = String.fromCharCode(code);
+	   if( (navigator.userAgent.indexOf('Gecko')) || (navigator.userAgent.indexOf('Presto')) ){
+	       // Firefox and Opera send a code of special key whe user press them.
+	       // below statements avoid prevented some codes sended.(arrows, delete, home, end, backspace, tab)
+	       if( (code==37) || (code==38) ||(code==39) ||(code==40) ||(code==46) ||(code==36) ||(code==35) ||(code==8) ||(code==9) ){
+		   return true;
+	       }
+	   }
 	   if( (!code) || (code < 32) || (!regex.test(ch)) ) {
 	     event.preventDefault();
 	     return false;
